@@ -1,0 +1,288 @@
+{
+  "datasets": [
+    {
+      "name": "2d982da9",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `main`;\n",
+        "USE SCHEMA `christma_hits_schema`;\n",
+        "\n",
+        "SELECT \n",
+        "    artist,\n",
+        "    COUNT(*) AS artist_count,\n",
+        "    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 2) AS percentage\n",
+        "FROM main.christma_hits_schema.christmas_hits\n",
+        "GROUP BY artist\n",
+        "ORDER BY percentage DESC;"
+      ]
+    },
+    {
+      "name": "663b0535",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT  week_of_year,\n",
+        "        SUM(streams) AS weekly_streams\n",
+        "FROM main.christma_hits_schema.christmas_hits\n",
+        "GROUP BY week_of_year;"
+      ]
+    },
+    {
+      "name": "2c399d2b",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT COUNT(streams),\n",
+        "      date\n",
+        "FROM main.christma_hits_schema.christmas_hits\n",
+        "GROUP BY date;"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "18a73417",
+      "displayName": "Untitled Page",
+      "layout": [
+        {
+          "widget": {
+            "name": "72325f8d",
+            "queries": [
+              {
+                "name": "c5a82c95f7fe4b3a8ce324a6a5d16bcc",
+                "query": {
+                  "datasetName": "2d982da9",
+                  "fields": [
+                    {
+                      "name": "artist",
+                      "expression": "`artist`"
+                    },
+                    {
+                      "name": "column_6362a99696",
+                      "expression": "SUM(`percentage`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 0,
+              "viz_spec": {
+                "display_name": "Visualization 1",
+                "viz_type": "CHART",
+                "serialized_options": "{\"isAggregationOn\":true,\"series\":{\"error_y\":{\"type\":\"data\",\"visible\":true},\"stacking\":null},\"coefficient\":1,\"yAxis\":[{\"type\":\"-\"},{\"opposite\":true,\"type\":\"-\"}],\"columnConfigurationMap\":{\"x\":{\"column\":\"artist\",\"id\":\"column_6362a99699\"},\"y\":[{\"column\":\"percentage\",\"id\":\"column_6362a99696\",\"transform\":\"SUM\"}]},\"alignYAxesAtZero\":true,\"direction\":{\"type\":\"counterclockwise\"},\"swappedAxes\":false,\"percentFormat\":\"0[.]00%\",\"textFormat\":\"\",\"legend\":{\"traceorder\":\"normal\"},\"globalSeriesType\":\"pie\",\"version\":2,\"sizemode\":\"diameter\",\"seriesOptions\":{\"column_6362a99696\":{\"name\":\"percentage\",\"type\":\"pie\",\"yAxis\":0}},\"error_y\":{\"type\":\"data\",\"visible\":true},\"sortX\":true,\"showDataLabels\":true,\"missingValuesAsZero\":true,\"useAggregationsUi\":true,\"numberFormat\":\"0,0.[00000]\",\"dateTimeFormat\":\"DD/MM/YYYY HH:mm\",\"sortY\":true,\"valuesOptions\":{},\"xAxis\":{\"labels\":{\"enabled\":true},\"type\":\"-\"}}",
+                "query_name": "c5a82c95f7fe4b3a8ce324a6a5d16bcc"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "938ef9cb",
+            "queries": [
+              {
+                "name": "131c3ebdd8bb40979d2c07c43176fc02",
+                "query": {
+                  "datasetName": "663b0535",
+                  "fields": [
+                    {
+                      "name": "week_of_year",
+                      "expression": "`week_of_year`"
+                    },
+                    {
+                      "name": "column_6362a996113",
+                      "expression": "SUM(`weekly_streams`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 0,
+              "viz_spec": {
+                "display_name": "Visualization 1",
+                "viz_type": "CHART",
+                "serialized_options": "{\"isAggregationOn\":true,\"series\":{\"error_y\":{\"type\":\"data\",\"visible\":true},\"stacking\":null},\"coefficient\":1,\"yAxis\":[{\"type\":\"-\"},{\"opposite\":true,\"type\":\"-\"}],\"columnConfigurationMap\":{\"x\":{\"column\":\"week_of_year\",\"id\":\"column_6362a996112\"},\"y\":[{\"column\":\"weekly_streams\",\"id\":\"column_6362a996113\",\"transform\":\"SUM\"}]},\"alignYAxesAtZero\":true,\"direction\":{\"type\":\"counterclockwise\"},\"swappedAxes\":false,\"percentFormat\":\"0[.]00%\",\"textFormat\":\"\",\"legend\":{\"traceorder\":\"normal\"},\"globalSeriesType\":\"line\",\"version\":2,\"sizemode\":\"diameter\",\"seriesOptions\":{\"column_6362a996113\":{\"name\":\"weekly_streams\",\"type\":\"line\",\"yAxis\":0}},\"error_y\":{\"type\":\"data\",\"visible\":true},\"sortX\":true,\"showDataLabels\":false,\"missingValuesAsZero\":true,\"useAggregationsUi\":true,\"numberFormat\":\"0,0.[00000]\",\"dateTimeFormat\":\"DD/MM/YYYY HH:mm\",\"sortY\":true,\"valuesOptions\":{},\"xAxis\":{\"labels\":{\"enabled\":true},\"type\":\"-\"}}",
+                "query_name": "131c3ebdd8bb40979d2c07c43176fc02"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "72cceb9f",
+            "queries": [
+              {
+                "name": "2f6c2f2a677a42d6a5eb6623e553a51b",
+                "query": {
+                  "datasetName": "2c399d2b",
+                  "fields": [
+                    {
+                      "name": "date",
+                      "expression": "`date`"
+                    },
+                    {
+                      "name": "column_6362a996132",
+                      "expression": "SUM(`count(streams)`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 0,
+              "viz_spec": {
+                "display_name": "Visualization 1",
+                "viz_type": "CHART",
+                "serialized_options": "{\"isAggregationOn\":true,\"series\":{\"error_y\":{\"type\":\"data\",\"visible\":true},\"stacking\":null},\"coefficient\":1,\"yAxis\":[{\"type\":\"-\"},{\"opposite\":true,\"type\":\"-\"}],\"columnConfigurationMap\":{\"x\":{\"column\":\"date\",\"id\":\"column_6362a996131\"},\"y\":[{\"column\":\"count(streams)\",\"id\":\"column_6362a996132\",\"transform\":\"SUM\"}]},\"alignYAxesAtZero\":true,\"direction\":{\"type\":\"counterclockwise\"},\"swappedAxes\":false,\"percentFormat\":\"0[.]00%\",\"textFormat\":\"\",\"legend\":{\"traceorder\":\"normal\"},\"globalSeriesType\":\"column\",\"version\":2,\"sizemode\":\"diameter\",\"seriesOptions\":{\"column_6362a996132\":{\"color\":\"#FFAB00\",\"name\":\"count(streams)\",\"type\":\"column\",\"yAxis\":0}},\"error_y\":{\"type\":\"data\",\"visible\":true},\"sortX\":true,\"showDataLabels\":false,\"missingValuesAsZero\":true,\"useAggregationsUi\":true,\"numberFormat\":\"0,0.[00000]\",\"dateTimeFormat\":\"DD/MM/YYYY HH:mm\",\"sortY\":true,\"valuesOptions\":{},\"xAxis\":{\"labels\":{\"enabled\":true},\"type\":\"-\"}}",
+                "query_name": "2f6c2f2a677a42d6a5eb6623e553a51b"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "76a8dd9d",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "8670c088",
+            "queries": [
+              {
+                "name": "dashboards/01f0d27747561c24b1558076bcaf4125/datasets/01f0d2775cf71695bef775c1cfc92c08_date",
+                "query": {
+                  "datasetName": "2c399d2b",
+                  "fields": [
+                    {
+                      "name": "date",
+                      "expression": "`date`"
+                    },
+                    {
+                      "name": "date_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "date",
+                    "queryName": "dashboards/01f0d27747561c24b1558076bcaf4125/datasets/01f0d2775cf71695bef775c1cfc92c08_date"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              },
+              "selection": {
+                "defaultSelection": {
+                  "range": {
+                    "dataType": "DATE",
+                    "min": {
+                      "value": "2018-01-01T00:00:00.000"
+                    },
+                    "max": {
+                      "value": "2018-12-27T23:59:59.999"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "f3d2ea18",
+            "queries": [
+              {
+                "name": "dashboards/01f0d27747561c24b1558076bcaf4125/datasets/01f0d27747571121a238bc79c9075286_artist",
+                "query": {
+                  "datasetName": "2d982da9",
+                  "fields": [
+                    {
+                      "name": "artist",
+                      "expression": "`artist`"
+                    },
+                    {
+                      "name": "artist_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "artist",
+                    "queryName": "dashboards/01f0d27747561c24b1558076bcaf4125/datasets/01f0d27747571121a238bc79c9075286_artist"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
